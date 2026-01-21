@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dhairya Baxi</title>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --fg: #0f172a;
+      --muted: #475569;
+      --accent: #2563eb;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.65;
+    }
+
+    .hero-wrapper {
+      border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+      background: linear-gradient(to bottom, #ffffff, #f8fafc);
+    }
+
+    .hero {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2.25rem 1.25rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .photo {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), #60a5fa);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: white;
+    }
+
+    h1 { font-size: 1.9rem; margin: 0 0 0.25rem; }
+    .subtitle { color: var(--muted); font-size: 0.95rem; }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(248, 250, 252, 0.95);
+      border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+      z-index: 10;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+      margin: 0;
+      padding: 0.6rem 1.25rem;
+      justify-content: center;
+    }
+
+    nav button {
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    nav button.active,
+    nav button:hover { color: var(--accent); }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+    }
+
+    section { display: none; }
+    section.active { display: block; }
+
+    h2 {
+      font-size: 1.25rem;
+      margin: 2rem 0 1rem;
+      padding-bottom: 0.25rem;
+      border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+    }
+
+    .item {
+      margin-bottom: 1.25rem;
+    }
+
+    .item strong { font-weight: 600; }
+
+    .meta {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    ul {
+      margin: 0.5rem 0 0 1.2rem;
+    }
+
+    .abstract-toggle {
+      background: none;
+      border: none;
+      color: var(--accent);
+      padding: 0;
+      cursor: pointer;
+      font-size: 0.85rem;
+    }
+
+    .abstract {
+      display: none;
+      margin-top: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    .viz-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 0.75rem;
+    }
+
+    .viz-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      background: white;
+      text-decoration: none;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .viz-card img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      transition: transform 0.35s ease;
+      display: block;
+    }
+
+    .viz-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
+    }
+
+    .viz-card:hover img {
+      transform: scale(1.08);
+    }
+
+    .viz-title {
+      padding: 0.5rem 0.6rem;
+      font-size: 0.85rem;
+      color: var(--fg);
+      background: rgba(248, 250, 252, 0.95);
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 640px) {
+      .hero { flex-direction: column; text-align: center; }
+      .viz-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Persistent Hero -->
+  <header class="hero-wrapper">
+    <div class="hero">
+      <img src="https://2026.cgo.org/getProfileImage/dhairyabaxi/e80fdf5d-62e6-4bb4-a2df-c5615dbe6094/small-avatar.jpg?1768558176000" class="photo">
+      <div>
+        <h1>Dhairya Baxi</h1>
+        <div class="subtitle">M.Tech CSA <br> Indian Institute of Science, Bangalore</div>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <ul>
+      <li><button class="active" onclick="showSection('about')">About</button></li>
+      
+      <li><button onclick="showSection('education')">Background</button></li>
+      <li><button onclick="showSection('work')">Stuff</button></li>
+      <li><button onclick="showSection('contact')">Contact</button></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <!-- Education & Experience -->
+    <section id="education">
+      <h2>Education</h2>
+
+      <div class="item">
+        <strong>Indian Institute of Science, Bangalore</strong><br />
+        <span class="meta">Master of Technology · Computer Science and Engineering (2025 – Present)</span><br />
+        Department of Computer Science and Automation
+      </div>
+
+      <div class="item">
+        <strong>Institute of Technology, Nirma University</strong><br />
+        <span class="meta">Bachelor of Technology · Computer Science and Engineering (2021 – 2025)</span>
+      </div>
+
+      <h2 style="margin-top:2rem">Experience</h2>
+
+      <div class="item">
+        <strong>Scalable Compilers for Heterogeneous Architectures Group, IIT Hyderabad</strong><br />
+        <span class="meta">Research Internship · December 2024 – August 2025</span>
+        <ul>
+          <li>Worked on compiler optimization projects under the guidance of Dr. Ramakrishna Upadrasta.</li>
+          <li>Developed, refactored, and benchmarked MLIR passes and related infrastructure.</li>
+          <li>Performed performance evaluation, plotting, and automation scripting.</li>
+          <li><em>Technologies:</em> C++, CMake, MLIR, torch-mlir, ISL, Barvinok</li>
+        </ul>
+      </div>
+
+      <div class="item">
+        <strong>TuskerAI</strong><br />
+        <span class="meta">Summer Research Internship · April – July 2024</span>
+        <ul>
+          <li>Developed <strong>Quantum-Gated GRU (QG-GRU)</strong>, integrating quantum circuits with traditional GRUs.</li>
+          <li>Conducted experiments and prepared results for presentation.</li>
+          <li><em>Technologies:</em> Qiskit, PyTorch, Python, Matplotlib</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="active">
+      <div class="item">
+        <h2>About</h2>
+        <!-- <span class="meta">Master of Technology · Computer Science and Engineering (2025 – Present)</span><br /> -->
+        <!-- Department of Computer Science and Automation -->
+        <p >
+          I am an M.Tech student in Computer Science and Automation at IISc. I love programming and computer science in general. Recently, I've developed a special interest in compilers and polyhedral compilation. In addition I love learning about Deep Learning, Security, Quantum Computing, and many more things.
+        </p>
+      </div>
+    </section>
+
+    
+
+    <!-- Work -->
+    <section id="work">
+      <h2>Publication</h2>
+
+      <div class="item">
+        <strong>PolyUFC: Polyhedral Compilation Meets Roofline Analysis for Uncore Frequency Capping</strong><br />
+        <span class="meta">
+          Nilesh Rajendra Shah, M V V S Manoj Kumar, Dhairya Baxi, and Ramakrishna Upadrasta<br />
+          <em>2026 IEEE/ACM International Symposium on Code Generation and Optimization (CGO)</em>
+        </span><br />
+        <button class="abstract-toggle" onclick="toggleAbstract()">Show abstract</button>
+        <div id="abstract" class="abstract">
+          We present PolyUFC, an MLIR based compilation flow for uncore frequency capping that combines (performance and power) roofline analyses and polyhedral compilation-based static analysis for characterization of affine programs.
+We introduce a parametric mathematical model that links operational intensity and uncore frequency to derive frequency caps, validated through empirical evaluation on real hardware.
+By embedding these caps into Pluto optimized code generated by Polygeist, we achieve improvements in Energy Delay Product (EDP) up to 42% on compute-bound, and up to 54% on bandwidth-bound programs—carefully selected from ML-models from vision/NLP domains and PolyBench—over Intel UFS driver.
+Our framework is retargetable across multiple micro-architectures; and can handle multiple optimization goals like performance, energy and EDP, and is applicable across inter/intra dialects.
+
+
+        </div>
+      </div>
+
+      <h2 style="margin-top:2rem">Projects</h2>
+
+      <div class="item">
+        <strong>Polyqsim</strong> · <a href="https://github.com/Baxi-codes/Polyqsim">GitHub</a><br />
+        <span class="meta">QASM2 to MLIR Affine for statevector quantum circuit simulation</span>
+        <p>
+          Polyqsim is a tool that translates QASM2 quantum assembly code into the MLIR
+          Affine dialect, enabling integration of quantum programs into MLIR polyhedral
+          optimization infrastructure for efficient statevector simulation.
+        </p>
+      </div>
+      <div class="item">
+        <strong>FianchettoAD</strong> · <a href="https://github.com/Baxi-codes/FianchettoAD">GitHub</a><br />
+        <span class="meta">Automatic Differentiation</span>
+        <p>
+          FianchettoAD is a programming language that supports automatic differentiation (autodiff) out of the box. With FianchettoAD, you can easily compute derivatives of functions without having to implement differentiation manually.
+
+          The language is currently under development and is incomplete. 
+        </p>
+      </div>
+      <div class="item">
+        <strong>Fun</strong><br />
+        <span class="meta">Cool math visualizers in HTML5 canvas</span>
+
+        <div class="viz-grid">
+          <a class="viz-card" href="https://baxi-codes.github.io/computing-pi-with-collisions/" target="_blank">
+            <img src="img/pi.png" alt="Computing Pi with Collisions" />
+            <div class="viz-title">Computing pi with Collisions</div>
+          </a>
+
+          <a class="viz-card" href="https://baxi-codes.github.io/twin-dragon-curve/" target="_blank">
+            <img src="img/twindragon.png" alt="Twin Dragon Curve" />
+            <div class="viz-title">Twin Dragon Curve</div>
+          </a>
+
+          <a class="viz-card" href="https://baxi-codes.github.io/cardioid/animated-c/index.html" target="_blank">
+            <img src="img/cardioid.png" alt="Cardioid Animation" />
+            <div class="viz-title">Cardioid Visualization</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="item">
+        <table>
+          <tr>
+
+            <td>Email: </td> <td><a href="mailto:baxivishal@iisc.ac.in">baxivishal@iisc.ac.in</a></td>
+          </tr>
+          <tr>
+        <td>GitHub:</td> <td><a href="https://github.com/Baxi-codes/">github.com/Baxi-codes</a></td>
+        </tr><tr>
+        <td>LinkedIn:</td> <td><a href="https://www.linkedin.com/in/dhairya-baxi-38908a1b9/">linkedin.com/in/dhairya-baxi</a></td></tr>
+        </table>
+      </div>
+    </section>
+
+    <footer>
+      © 2026 Dhairya Baxi
+    </footer>
+  </main>
+
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+      document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      event.target.classList.add('active');
+    }
+
+    function toggleAbstract() {
+      const abs = document.getElementById('abstract');
+      const btn = event.target;
+      const visible = abs.style.display === 'block';
+      abs.style.display = visible ? 'none' : 'block';
+      btn.textContent = visible ? 'Show abstract' : 'Hide abstract';
+    }
+  </script>
+</body>
+</html>
